@@ -1,7 +1,7 @@
 <?php
 define("DB_SERVER", "localhost");
 define("DB_USERNAME", "root");
-define("DB_PASSWORD", "");
+define("DB_PASSWORD", "Root@321");
 define("DB_NAME", "registered");
 
 # Connection

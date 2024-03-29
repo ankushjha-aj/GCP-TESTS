@@ -17,7 +17,7 @@ jobs:
     - name: Deploy
       uses: appleboy/ssh-action@v0.1.10
       with: 
-         host: ${{ secrets.HOST }}
-         username: ${{ secrets.USERNAME }}
-         password: ${{ secrets.PASSWORD }}
+         host: ${{ 34.125.214.51 }}
+         username: ${{ gcp-tests }}
+         password: ${{ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCaQpPh1mlDdpjl9peuhvVC83YgCF/N90zmk3906CzTrNELwAu2K3giUCAlSozngrPCeq4NkoUzEOcfOxxg3wXOH73Rql8yR31AAnwJKXvKLP2DqU2bXYsRPbDNw0DRd4EOxzP8/Yh1DbzXd+/SHGp+7voDRRLighENW3T1wbD9+qiSFyqGAdibGpe8YJ5+HXbOhbGgFtUmYcl3snU6+3HuhfpLhttQYshHbjA3r4xFraejbk+7Zdd9AAux4cy77iBiG8dvoPXevZxb3gonzQ1sB+6EQMTkTNoMVP9xfwpCgeMAFnkHhqxlaw0jN9J4LBlgFTPdXHLo8aRpPmGh723J gcp-tests }}
          port: 22

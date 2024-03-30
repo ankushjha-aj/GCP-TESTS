@@ -20,7 +20,7 @@ jobs:
           username: ${{ secrets.GCP_VM_USERNAME }}
           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
           source: "."  
-          target: "/var/www/html/php"  # Target directory on GCP VM
+          target: "/home/gcp-tests/php"  # Target directory on GCP VM
 
       - name: SSH into GCP VM and restart server
         uses: appleboy/ssh-action@master

@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty(trim($_POST["user_login"]))) {
     $user_login_err = "Please enter your username or an email id.";
   } else {
-    $user_login = trim($_POST["user_login"]);
+    $user_login = trim($_POST["user_login"]); 
   }
 
   if (empty(trim($_POST["user_password"]))) {

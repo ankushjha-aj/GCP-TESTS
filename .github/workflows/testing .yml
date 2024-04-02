@@ -17,4 +17,4 @@ jobs:
         env:
           WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
         run: |
-          curl -X POST -H 'Content-Type: application/json' -d '{"text": "Hello from GitHub!"}' $WEBHOOK_URL
+          curl -X POST -H 'Content-Type: application/json' -d '{"text": "Hello this is for checking automation"}' $WEBHOOK_URL

@@ -29,4 +29,4 @@ jobs:
           username: ${{ secrets.GCP_VM_USERNAME }}
           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
           script: |
-            sudo systemctl stop nginx   
+            sudo systemctl stop nginx  

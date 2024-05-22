@@ -26,8 +26,8 @@ jobs:
     with:
       target_directory: '/var/www/html/php'
     secrets:
-      host: ${{ secrets.GCP_VM_HOST }}
-      username: ${{ secrets.GCP_VM_USERNAME }}
+      host: 34.125.214.51
+      username: gcp-tests
       key: ${{ secrets.GCP_VM_PRIVATE_KEY }} 
     
 # name: Deploy to GCP VM

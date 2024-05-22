@@ -5,7 +5,22 @@ on:
     branches:
       - main  # Or your preferred branch name
 
+
 jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Echo GCP VM Host
+        run: echo "${{ secrets.GCP_VM_HOST }}"
+
+      - name: Echo GCP VM Username
+        run: echo "${{ secrets.GCP_VM_USERNAME }}"
+
+
   deploy_project:
     uses: ankushjha-aj/html-test/.github/workflows/deploy_to_gcp_vm.yml@reusable_workflow
     with:

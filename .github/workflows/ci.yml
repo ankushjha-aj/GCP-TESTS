@@ -1,85 +1,85 @@
-name: Deploy My Project
-
-on:
-  push:
-    branches:
-      - main  # Or your preferred branch name
-
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Echo GCP VM Host
-        run: echo "${{ secrets.GCP_VM_HOST }}" 
-
-      - name: Echo GCP VM Username
-        run: echo "${{ secrets.GCP_VM_USERNAME }}"
-
-
-  deploy_project:
-    uses: ankushjha-aj/html-test/.github/workflows/deploy_to_gcp_vm.yml@reusable_workflow
-    with:
-      host: ${{ secrets.GCP_VM_HOST }}
-      username: ${{ secrets.GCP_VM_USERNAME }}
-      key: ${{ secrets.GCP_VM_PRIVATE_KEY }} 
-      target_directory: '/var/www/html/php'
-    
-    
-# name: Deploy to GCP VM
+# name: Deploy My Project
 
 # on:
 #   push:
 #     branches:
-#       - main  # Change this to your main branch name
+#       - main  # Or your preferred branch name
+
 
 # jobs:
-#   deploy:
+#   build:
 #     runs-on: ubuntu-latest
 
 #     steps:
 #       - name: Checkout code
 #         uses: actions/checkout@v2
 
-#       - name: Copy files to GCP VM
-#         uses: appleboy/scp-action@master 
-#         with:
-#           host: ${{ secrets.GCP_VM_HOST }}
-#           username: ${{ secrets.GCP_VM_USERNAME }}
-#           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
-#           source: "."  
-#           target: "/var/www/html/php"  # Target directory on GCP VM
+#       - name: Echo GCP VM Host
+#         run: echo "${{ secrets.GCP_VM_HOST }}" 
+
+#       - name: Echo GCP VM Username
+#         run: echo "${{ secrets.GCP_VM_USERNAME }}"
+
+
+#   deploy_project:
+#     uses: ankushjha-aj/html-test/.github/workflows/deploy_to_gcp_vm.yml@reusable_workflow
+#     with:
+#       host: ${{ secrets.GCP_VM_HOST }}
+#       username: ${{ secrets.GCP_VM_USERNAME }}
+#       key: ${{ secrets.GCP_VM_PRIVATE_KEY }} 
+#       target_directory: '/var/www/html/php'
+    
+    
+name: Deploy to GCP VM
+
+on:
+  push:
+    branches:
+      - main  # Change this to your main branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Copy files to GCP VM
+        uses: appleboy/scp-action@master 
+        with:
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+          source: "."  
+          target: "/var/www/html/php"  # Target directory on GCP VM
           
-#       - name: stopping Listening on 3000
-#         uses: appleboy/ssh-action@master
-#         with:
-#           host: ${{ secrets.GCP_VM_HOST }}
-#           username: ${{ secrets.GCP_VM_USERNAME }}
-#           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
-#           script: |
-#             sudo systemctl stop nginx  
+      - name: stopping Listening on 3000
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+          script: |
+            sudo systemctl stop nginx  
 
-#       - name: start apache2
-#         uses: appleboy/ssh-action@master
-#         with:
-#           host: ${{ secrets.GCP_VM_HOST }}
-#           username: ${{ secrets.GCP_VM_USERNAME }}
-#           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
-#           script: |
-#             sudo systemctl start apache2 
+      - name: start apache2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+          script: |
+            sudo systemctl start apache2 
 
-#       - name: SSH into GCP 
-#         uses: appleboy/ssh-action@master
-#         with:
-#           host: ${{ secrets.GCP_VM_HOST }}
-#           username: ${{ secrets.GCP_VM_USERNAME }}
-#           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
-#           script: |
-#             sudo systemctl restart apache2 
+      - name: SSH into GCP 
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+          script: |
+            sudo systemctl restart apache2 
 
   
 

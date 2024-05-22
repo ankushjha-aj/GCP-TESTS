@@ -26,7 +26,7 @@ jobs:
     with:
       target_directory: '/var/www/html/php'
     secrets:
-      host: 34.125.214.51
+      host: 34.125.214.51 
       username: gcp-tests
       key: ${{ secrets.GCP_VM_PRIVATE_KEY }} 
     

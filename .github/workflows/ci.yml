@@ -13,10 +13,8 @@ jobs:
       gcp_vm_username: ${{ secrets.GCP_VM_USERNAME }}
       gcp_vm_private_key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
       target_directory: '/var/www/html/php'
+    secrets: inherit 
     
-
-
-
 # name: Deploy to GCP VM
 
 # on:

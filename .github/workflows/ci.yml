@@ -21,14 +21,14 @@ jobs:
         run: echo "${{ secrets.GCP_VM_USERNAME }}"
 
 
-  # deploy_project:
-  #   uses: ankushjha-aj/html-test/.github/workflows/deploy_to_gcp_vm.yml@reusable_workflow
-  #   with:
-  #     gcp_vm_host: ${{ secrets.GCP_VM_HOST }}
-  #     gcp_vm_username: ${{ secrets.GCP_VM_USERNAME }}
-  #     gcp_vm_private_key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
-  #     target_directory: '/var/www/html/php'
-  #   secrets: inherit 
+  deploy_project:
+    uses: ankushjha-aj/html-test/.github/workflows/deploy_to_gcp_vm.yml@reusable_workflow
+    with:
+      gcp_vm_host: ${{ secrets.GCP_VM_HOST }}
+      gcp_vm_username: ${{ secrets.GCP_VM_USERNAME }}
+      gcp_vm_private_key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+      target_directory: '/var/www/html/php'
+    secrets: inherit 
     
 # name: Deploy to GCP VM
 

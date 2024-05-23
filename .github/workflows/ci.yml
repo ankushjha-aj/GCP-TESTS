@@ -10,23 +10,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
   
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Echo GCP VM Host
-        run: echo "${{ secrets.GCP_VM_HOST }}" 
-
-      - name: Echo GCP VM Username
-        run: echo "${{ secrets.GCP_VM_USERNAME }}"
-
 
   deploy_project:
     uses: ankushjha-aj/html-test/.github/workflows/deploy_to_gcp_vm.yml@main
     secrets:
-      host: ${{ secrets.GCP_VM_HOST }}
-      username: ${{ secrets.GCP_VM_USERNAME }}
-      key: ${{ secrets.GCP_VM_PRIVATE_KEY }} 
+      gcp_vm_host: ${{ secrets.GCP_VM_HOST }}
+      gcp_vm_username: ${{ secrets.GCP_VM_USERNAME }}
+      gcp_vm_private_key: ${{ secrets.GCP_VM_PRIVATE_KEY }} 
     with:
       target_directory: '/var/www/html/php'
       

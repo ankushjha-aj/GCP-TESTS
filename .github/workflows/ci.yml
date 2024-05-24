@@ -5,16 +5,54 @@ on:
     branches:
       - main  # Or your preferred branch name 
 
-
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
   deploy_project:
-    uses: ankushjha-aj/html-test/.github/workflows/deploy_to_gcp_vm.yml@main
-    secrets:
-      gcp_vm_host: ${{ secrets.GCP_VM_HOST }}
-      gcp_vm_username: ${{ secrets.GCP_VM_USERNAME }}
-      gcp_vm_private_key: ${{ secrets.GCP_VM_PRIVATE_KEY }} 
-    with:
-      target_directory: '/var/www/html/php'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GCP VM
+        uses: ankushjha-aj/html-test/.github/workflows/deploy_to_gcp_vm.yml@main
+        with:
+          target_directory: '/var/www/html/php'
+        env:
+          GCP_VM_HOST: ${{ secrets.GCP_VM_HOST }}
+          GCP_VM_USERNAME: ${{ secrets.GCP_VM_USERNAME }}
+          GCP_VM_PRIVATE_KEY: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+
+
+# name: Deploy My Project
+
+# on:
+#   push:
+#     branches:
+#       - main  # Or your preferred branch name 
+
+
+# jobs:
+#   deploy_project:
+#     uses: ankushjha-aj/html-test/.github/workflows/deploy_to_gcp_vm.yml@main
+#     secrets:
+#       gcp_vm_host: ${{ secrets.GCP_VM_HOST }}
+#       gcp_vm_username: ${{ secrets.GCP_VM_USERNAME }}
+#       gcp_vm_private_key: ${{ secrets.GCP_VM_PRIVATE_KEY }} 
+#     with:
+#       target_directory: '/var/www/html/php'
       
     
     

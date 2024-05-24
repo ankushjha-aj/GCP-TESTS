@@ -4,8 +4,7 @@ on:
   push:
     branches:
       - main  # Or your preferred branch name 
-
-
+      
 jobs:
   deploy_project:
     uses: ankushjha-aj/html-test/.github/workflows/deploy_to_gcp_vm.yml@main

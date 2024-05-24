@@ -3,7 +3,7 @@ name: Deploy My Project
 on:
   push:
     branches:
-      - main  # Or your preferred branch name
+      - main  # Or your preferred branch name 
 
 
 jobs:

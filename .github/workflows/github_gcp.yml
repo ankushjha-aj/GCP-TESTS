@@ -3,11 +3,11 @@ name: Deploy to GCP VM
 on:
   push:
     branches:
-      - main  # Change this to your main branch name  
+      - github-gcp # Change this to your main branch name  
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout code
